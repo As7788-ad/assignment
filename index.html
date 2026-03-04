@@ -1,82 +1,295 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>رسالة اعتذار</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رحلة التعافي - المدينة الطبية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            direction: rtl;
-            background-color: #f9f9f9;
-            margin: 40px;
-            color: #333;
+        :root {
+            /* لوحة ألوان طبية احترافية */
+            --primary-gradient: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+            --secondary-gradient: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            --primary-color: #0d9488;
+            --secondary-color: #0f766e;
+            --accent-color: #d97706; /* ذهبي دافئ لرمضان والنقاط الهامة */
+            --bg-body: #f1f5f9;
+            --bg-card: #ffffff;
+            --text-dark: #0f172a;
+            --text-light: #475569;
+            --shadow-soft: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+            --shadow-hover: 0 20px 25px -5px rgba(13, 148, 136, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+            --transition: all 0.3s ease-in-out;
         }
 
-        address {
-            font-style: normal;
-            background-color: #e9ecef;
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
+        /* تنسيقات عامة */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        body { background-color: var(--bg-body); color: var(--text-dark); line-height: 1.9; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        p { font-size: 1.1rem; color: var(--text-light); font-weight: 300; }
+        h1, h2, h3 { font-weight: 700; color: var(--text-dark); }
 
-
-        a.whatsapp-button {
-            display: inline-block;
-            background-color: #2C98A0;
+        /* ترويسة الصفحة وقسم الـ Hero */
+        .hero-section {
+            background: var(--primary-gradient);
             color: white;
-            padding: 10px 15px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 10px;
+            padding: 100px 0;
+            border-bottom-left-radius: 60px;
+            border-bottom-right-radius: 60px;
+            box-shadow: 0 10px 30px rgba(15, 118, 110, 0.2);
         }
 
-        a.whatsapp-button:hover {
-            background-color: #b17322;
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            color: white;
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .hero-text p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.25rem;
+            margin-bottom: 0;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        /* تنسيق الأقسام الرئيسية */
+        .section-padding { padding: 80px 0; }
+
+        /* قسم المقدمة */
+        .intro-box {
+            background: var(--bg-card);
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: var(--shadow-soft);
+            text-align: center;
+            margin-top: -60px; /* تداخل بسيط مع الـ hero section لإعطاء حداثة */
+            position: relative;
+            z-index: 10;
+        }
+
+        .intro-box strong { color: var(--primary-color); font-weight: 700; font-size: 1.3rem; display: block; margin-bottom: 15px; }
+
+        /* العناوين الفرعية */
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2.2rem; color: var(--secondary-color); position: relative; display: inline-block; padding-bottom: 15px; }
+        .section-title h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 5px; background-color: var(--accent-color); border-radius: 3px; }
+
+        /* شبكة البطاقات (Grid Cards) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(13, 148, 136, 0.1);
+        }
+
+        .feature-card::before { /* خط زخرفي علوي يظهر عند الحوم */
+            content: ''; position: absolute; top: 0; right: 0; width: 0; height: 5px; background: var(--primary-gradient); transition: var(--transition);
+        }
+
+        .feature-card:hover::before { width: 100%; }
+
+        .card-icon {
+            font-size: 2rem; color: var(--primary-color); background-color: #ccfbf1; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 15px; margin-bottom: 25px;
+        }
+
+        .feature-card h3 { font-size: 1.4rem; margin-bottom: 15px; color: var(--text-dark); }
+        .feature-card p { font-size: 1.05rem; }
+
+        /* قسم رمضان المتميز */
+        .ramadan-section {
+            background: var(--secondary-gradient);
+            padding: 80px 40px;
+            border-radius: 30px;
+            position: relative;
+            margin-bottom: 80px;
+        }
+
+        .ramadan-section .section-title h2 { color: var(--accent-color); }
+        .ramadan-section p { color: #854d0e; text-align: center; max-width: 900px; margin: 0 auto 20px auto; }
+        .ramadan-highlight { border-right: 4px solid var(--accent-color); padding-right: 20px; margin: 20px 0; }
+
+        /* الخلاصة والاقتباس */
+        .conclusion-section { text-align: center; max-width: 800px; margin: 0 auto 80px auto; }
+        
+        .final-quote {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 25px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(15, 118, 110, 0.3);
+            position: relative;
+        }
+        
+        .final-quote span {
+            display: block;
+            margin-top: 15px;
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.8;
+        }
+
+        /* تذييل الصفحة بسيط */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* التجاوب (Responsive) مع الجوال */
+        @media (max-width: 992px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 2.2rem; }
+            .intro-box { padding: 30px; margin-top: -40px; }
+            .section-padding { padding: 60px 0; }
+        }
+
+        @media (max-width: 768px) {
+            .section-title h2 { font-size: 1.8rem; }
+            .final-quote { font-size: 1.4rem; padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <address>
-        مقدم الرسالة: <strong>أسعد الشميري</strong><br>
-        إلى: <i>الدكتور نشوان نجاد</i><br>
-        التاريخ: <sub>30</sub>/<sub>4</sub>/<sup>2025</sup>
-    </address>
-    <p>
-        <strong>السلام عليكم ورحمة الله وبركاته،</strong><br>
-        أقدم لكم <i>خالص اعتذاري</i> على التأخر في تسليم التكليف المطلوب، وذلك بسبب ظروف السفر الطارئة التي حالت دون إنجازه في الوقت المحدد.
-    </p>
-    <p>
-        <strong>أسباب التأخر:</strong>
-        <ul>
-            <li>السفر خارج المدينة</li>
-            <li>ضعف الاتصال بالإنترنت</li>
-            <li>ظروف شخصية مفاجئة</li>
-        </ul>
-    </p>
-    <p>
-        <strong>الإجراءات التي سأقوم بها:</strong>
-        <ol>
-            <li>تسليم التكليف خلال أقرب وقت ممكن</li>
-            <li>التأكد من الالتزام بالمواعيد لاحقًا</li>
-            <li>طلب المشورة لتحسين الأداء</li>
-        </ol>
-    </p>
-    <p>
-        للاطلاع على التكليف، <a  class="whatsapp-button"href="assignment.html" target="_blank">اضغط هنا لفتح صفحة التكليف</a>.
-    </p>
-    <p>
-        للتواصل السريع عبر واتساب:<br>
-        <a class="whatsapp-button" href="https://wa.me/967773534990" target="_blank">راسلني على واتساب</a>
-    </p>
-    <p>
-        وتقبلوا فائق الاحترام والتقدير.
-    </p>
-   
-        المرسل: <strong>أسعد الشميري</strong><br>
-        <a  class="whatsapp-button" href="mailto:aass773534990@gmail.com">البريد الالكتروني</a>
- 
+    <header class="hero-section">
+        <div class="container hero-grid">
+            <div class="hero-text" data-aos="fade-left" data-aos-duration="1000">
+                <h1>رحلة التعافي تبدأ من الروح</h1>
+                <p>دور الصحة النفسية في دعم المرضى والمراجعين في مدينتنا الطبية</p>
+            </div>
+            <div class="hero-image" data-aos="zoom-in" data-aos-duration="1200">
+                <img src="pic.png" alt="المدينة الطبية - دعم نفسي">
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section class="intro-box" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+            <strong>لأن الدعم النفسي ليس ترفاً، بل هو الجسر الآمن الذي نعبر به معاً نحو الشفاء والطمأنينة.</strong>
+            <p>حين يواجه الإنسان تحديات صحية، لا يقتصر العبء على الجسد وحده، بل يمتد ليلامس الوجدان ويختبر طاقة التحمل والصبر. في تلك اللحظات الفارقة، تصبح الكلمة الطيبة، والاحتواء الصادق، والبيئة الداعمة أكثر من مجرد مواساة عابرة؛ إنها ركائز أساسية تعيد بناء الأمل وتخفف وطأة الألم. نحن نؤمن بأن الإنسان كِيانٌ متكامل، وأن العناية بالصحة النفسية هي الخطوة الأولى والجوهرية التي تسبق وترافق أي رحلة علاجية.</p>
+        </section>
+
+        <section class="section-padding">
+            <div class="section-title" data-aos="fade-up">
+                <h2>لماذا تُعد الصحة النفسية جزءًا أساسيًا من رحلة العلاج؟</h2>
+                <p style="margin-top:20px;">علمياً وإنسانياً، لا يمكن فصل الجسد عن العقل؛ فكل شعور بالخوف أو القلق ينعكس مباشرة على استجابة الجسد.</p>
+            </div>
+            
+            <div class="cards-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon">🛡️</div>
+                    <h3>تعزيز المناعة الجسدية</h3>
+                    <p>أثبتت الدراسات أن الطمأنينة وانخفاض مستويات التوتر يساهمان في استقرار وظائف الجسم وتحفيز جهاز المناعة، مما يسرّع من استجابة المريض للعلاج ويدعم قدرته على التشافي.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon">❤️</div>
+                    <h3>تخفيف حدة الألم</h3>
+                    <p>إن الشعور بالأمان والاحتواء العاطفي يقلل من إدراك الدماغ للألم الجسدي، ويمنح المريض قدرة أكبر على التكيف مع التحديات الصحية والتعايش معها بمرونة.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon">📈</div>
+                    <h3>رفع مستوى الاستجابة</h3>
+                    <p>المريض الذي يتلقى دعماً نفسياً ملائماً يمتلك دافعية أعلى للاستمرار في الخطة العلاجية، ومواجهة الأعراض الجانبية بصبر، مستمداً قوته من الدائرة المحيطة به.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding">
+            <div class="section-title" data-aos="fade-up">
+                <h2>كيف ينعكس الدعم النفسي في المجتمع؟</h2>
+                <p style="margin-top:20px;">الصحة النفسية دائرة تتسع لتشمل المراجعين، المرافقين، والكوادر التطوعية.</p>
+            </div>
+            
+            <div class="cards-grid">
+                <div class="feature-card" data-aos="flip-right" data-aos-delay="100">
+                    <h3>بناء مجتمع متراحم</h3>
+                    <p>عندما يجد المريض بيئة تتفهم مخاوفه دون أحكام، تتولد لديه ثقة عميقة بمن حوله، وتترسخ قيم التكافل الاجتماعي في أبهى صورها.</p>
+                </div>
+                <div class="feature-card" data-aos="flip-right" data-aos-delay="200">
+                    <h3>تخفيف أعباء المرافقين</h3>
+                    <p>يعيش أهل المريض ضغوطاً موازية. توفير بيئة داعمة نفسياً يخفف عنهم ثقل التجربة، ويمنحهم الطاقة المتجددة لمواصلة تقديم الرعاية بحب وصبر.</p>
+                </div>
+                <div class="feature-card" data-aos="flip-right" data-aos-delay="300">
+                    <h3>صناعة الأمل المتبادل</h3>
+                    <p>يخلق قصص إلهام حقيقية؛ حيث يتحول المراجع أو المتطوع إلى مصدر قوة لغيره، وتتحول لحظات الانتظار الصعبة إلى مساحات لتبادل الخبرات.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="ramadan-section" data-aos="zoom-in">
+            <div class="section-title">
+                <h2>رمضان… مساحة للطمأنينة والدعم</h2>
+            </div>
+            <p>في شهر رمضان المبارك، تتجلى أسمى معاني الإنسانية والرحمة. إنه مساحة روحية شاسعة لإعادة الاتصال بالذات وبالآخرين.</p>
+            <div class="ramadan-highlight">
+                <p>إن التكافل الذي نعيشه في هذا الشهر الفضيل يترجم إلى أفعال بسيطة ولكنها عظيمة الأثر؛ كالابتسامة الصادقة، والاستماع بإنصات، ومنح مساحة آمنة للبوح لمن أرهقهم مسير العلاج أو قلق الانتظار.</p>
+            </div>
+        </section>
+
+        <section class="conclusion-section" data-aos="fade-up">
+            <div class="section-title">
+                <h2>خلاصة القول</h2>
+            </div>
+            <p>كلنا شركاء في رحلة التعافي. الدعم النفسي التزام إنساني نبيل نمارسه جميعاً. حين نمنح وقتنا، وصدق مشاعرنا للآخرين، فإننا نبني معهم مجتمعاً معافىً، ينبض بالرحمة.</p>
+        </section>
+
+        <div class="final-quote" data-aos="flip-up" data-aos-offset="50">
+            "كن أنت المساحة الآمنة، وكن دائماً جزءاً من الشفاء."
+            <span>رسالة المدينة الطبية لكم</span>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 جميع الحقوق محفوظة للمدينة الطبية. رحلة تعافيكم تهمنا.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true, // الحركة تحدث مرة واحدة فقط عند التمرير ولا تتكرر عند الصعود
+            offset: 120, // المسافة بالبكسل لبدء الحركة قبل وصول العنصر للمشاهدة
+        });
+    </script>
 </body>
 </html>
