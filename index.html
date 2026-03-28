@@ -33,6 +33,7 @@
 
         .gradient-text {
             background: linear-gradient(to right, #818cf8, #c084fc);
+            -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -58,9 +59,10 @@
         <div class="container mx-auto px-6 flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <div
-                    class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg">
-                    30</div>
-                <span class="text-xl font-black" :class="scrolled ? 'text-slate-900' : 'text-white'">مارس</span>
+                    class="w-40 h-10 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                    30 مارس </div>
+                <span class="text-xl font-black" :class="scrolled ? 'text-slate-900' : 'text-white'">اليوم العالمي
+                    لثنائي القطب </span>
             </div>
             <div class="hidden lg:flex gap-8 items-center font-bold text-sm tracking-wide"
                 :class="scrolled ? 'text-slate-600' : 'text-slate-200'">
@@ -111,10 +113,10 @@
                         class="absolute -top-10 -right-10 w-40 h-40 bg-indigo-100 rounded-full mix-blend-multiply opacity-70 animate-pulse">
                     </div>
                     <div class="relative rounded-[3rem] overflow-hidden shadow-2xl z-10 image-zoom">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project_%28454045%29.jpg/800px-Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project_%28454045%29.jpg"
+                        <img src="https://cdn.britannica.com/36/69636-050-81A93193/Self-Portrait-artist-panel-board-Vincent-van-Gogh-1887.jpg"
                             alt="Vincent van Gogh" class="w-full h-[500px] object-cover">
                         <div class="absolute bottom-0 inset-x-0 p-8 bg-gradient-to-t from-slate-900 to-transparent">
-                            <p class="text-white text-sm italic">فنسنت فان غوخ - رمز الإبداع والمعاناة</p>
+                            <p class="text-white text-sm italic">فنسنت فان غوخ </p>
                         </div>
                     </div>
                 </div>
@@ -157,46 +159,34 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-10">
-                <div class="bg-white rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition group"
+                <div class="bg-white rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition group p-8"
                     data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1516302752625-fbb3c53c3f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                            class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-                            alt="Energy">
+                    <div class="mb-6 w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-bolt text-orange-600 text-2xl"></i>
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-orange-600 mb-4">نوبة الهوس (Mania)</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">ارتفاع ملحوظ في المزاج والطاقة وزيادة النشاط.
-                            قلة الحاجة للنوم، تطاير الأفكار، وسلوكيات متهورة ذات عواقب مالية أو شخصية عالية.</p>
-                    </div>
+                    <h3 class="text-2xl font-bold text-orange-600 mb-4">نوبة الهوس (Mania)</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">ارتفاع ملحوظ في المزاج والطاقة وزيادة النشاط.
+                        قلة الحاجة للنوم، تطاير الأفكار، وسلوكيات متهورة ذات عواقب مالية أو شخصية عالية.</p>
                 </div>
 
-                <div class="bg-white rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition group"
+                <div class="bg-white rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition group p-8"
                     data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1493676304818-94703992aa35?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                            class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-                            alt="Activity">
+                    <div class="mb-6 w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-feather text-teal-600 text-2xl"></i>
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-teal-600 mb-4">هوس خفيف (Hypomania)</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">تشبه الهوس ولكنها أخف شدة وأقصر مدة، ولا تتضمن
-                            أعراضاً ذهانية أو تعطيلاً وظيفياً شديداً في الحياة اليومية.</p>
-                    </div>
+                    <h3 class="text-2xl font-bold text-teal-600 mb-4">هوس خفيف (Hypomania)</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">تشبه الهوس ولكنها أخف شدة وأقصر مدة، ولا تتضمن
+                        أعراضاً ذهانية أو تعطيلاً وظيفياً شديداً في الحياة اليومية.</p>
                 </div>
 
-                <div class="bg-white rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition group"
+                <div class="bg-white rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition group p-8"
                     data-aos="fade-up" data-aos-delay="300">
-                    <div class="h-48 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                            class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
-                            alt="Solitude">
+                    <div class="mb-6 w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center">
+                        <i class="fas fa-cloud text-blue-800 text-2xl"></i>
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold text-blue-800 mb-4">نوبة الاكتئاب (Depression)</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">انخفاض حاد في المزاج وفقدان الاهتمام. تشمل
-                            اضطرابات النوم والشهية، انعدام الطاقة، الشعور بالذنب، وقد تصل إلى أفكار بالانتحار.</p>
-                    </div>
+                    <h3 class="text-2xl font-bold text-blue-800 mb-4">نوبة الاكتئاب (Depression)</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">انخفاض حاد في المزاج وفقدان الاهتمام. تشمل
+                        اضطرابات النوم والشهية، انعدام الطاقة، الشعور بالذنب، وقد تصل إلى أفكار بالانتحار.</p>
                 </div>
             </div>
         </div>
@@ -221,60 +211,48 @@
             <div
                 class="max-w-4xl mx-auto bg-slate-800/40 backdrop-blur-xl border border-slate-700 p-8 md:p-16 rounded-[3rem] shadow-3xl">
                 <div x-show="tab === 1" x-transition.scale.origin.bottom>
-                    <div class="flex flex-col md:flex-row gap-12 items-center">
-                        <div class="md:w-1/2">
-                            <h3 class="text-3xl font-black mb-6 text-indigo-400">ثنائي القطب من النوع الأول</h3>
-                            <ul class="space-y-4 text-slate-300">
-                                <li class="flex gap-3"><i class="fas fa-check-circle text-indigo-500 mt-1"></i> وجود
-                                    نوبة هوس واحدة على الأقل.</li>
-                                <li class="flex gap-3"><i class="fas fa-check-circle text-indigo-500 mt-1"></i> هوس كامل
-                                    (قد يصاحبه ذهان).</li>
-                                <li class="flex gap-3"><i class="fas fa-check-circle text-indigo-500 mt-1"></i> الخطر
-                                    الأكبر من الاندفاع والذهان.</li>
-                            </ul>
-                        </div>
-                        <div class="md:w-1/2 rounded-2xl overflow-hidden shadow-2xl">
-                            <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                                alt="Storm">
-                        </div>
+                    <div class="text-right">
+                        <h3 class="text-3xl font-black mb-6 text-indigo-400">ثنائي القطب من النوع الأول</h3>
+                        <ul class="space-y-4 text-slate-300 text-lg">
+                            <li class="flex gap-3"><i class="fas fa-check-circle text-indigo-500 mt-1"></i> وجود نوبة
+                                هوس واحدة على الأقل.</li>
+                            <li class="flex gap-3"><i class="fas fa-check-circle text-indigo-500 mt-1"></i> هوس كامل (قد
+                                يصاحبه ذهان أو يؤدي لخلل شديد).</li>
+                            <li class="flex gap-3"><i class="fas fa-check-circle text-indigo-500 mt-1"></i> قد تحدث
+                                نوبات اكتئاب كبرى، لكنها ليست شرطاً.</li>
+                            <li class="flex gap-3"><i class="fas fa-exclamation-triangle text-orange-500 mt-1"></i>
+                                الخطر الأكبر عادة يأتي من ناحية الاندفاع والذهان أثناء مرحلة الهوس.</li>
+                        </ul>
                     </div>
                 </div>
+
                 <div x-show="tab === 2" x-transition.scale.origin.bottom x-cloak>
-                    <div class="flex flex-col md:flex-row gap-12 items-center">
-                        <div class="md:w-1/2">
-                            <h3 class="text-3xl font-black mb-6 text-purple-400">ثنائي القطب من النوع الثاني</h3>
-                            <ul class="space-y-4 text-slate-300">
-                                <li class="flex gap-3"><i class="fas fa-check-circle text-purple-500 mt-1"></i> هوس خفيف
-                                    + نوبة اكتئاب كبرى واحدة.</li>
-                                <li class="flex gap-3"><i class="fas fa-check-circle text-purple-500 mt-1"></i> اكتئاب
-                                    كبير (شرط أساسي).</li>
-                                <li class="flex gap-3"><i class="fas fa-check-circle text-purple-500 mt-1"></i> العبء
-                                    الأكبر من الاكتئاب المتكرر.</li>
-                            </ul>
-                        </div>
-                        <div class="md:w-1/2 rounded-2xl overflow-hidden shadow-2xl">
-                            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                                alt="Quiet">
-                        </div>
+                    <div class="text-right">
+                        <h3 class="text-3xl font-black mb-6 text-purple-400">ثنائي القطب من النوع الثاني</h3>
+                        <ul class="space-y-4 text-slate-300 text-lg">
+                            <li class="flex gap-3"><i class="fas fa-check-circle text-purple-500 mt-1"></i> وجود نوبة
+                                هوس خفيف واحدة + نوبة اكتئاب كبرى واحدة.</li>
+                            <li class="flex gap-3"><i class="fas fa-check-circle text-purple-500 mt-1"></i> هوس خفيف
+                                (أقل شدة، لا يصل للذهان أو التنويم).</li>
+                            <li class="flex gap-3"><i class="fas fa-check-circle text-purple-500 mt-1"></i> اكتئاب كبير
+                                (شرط أساسي).</li>
+                            <li class="flex gap-3"><i class="fas fa-info-circle text-blue-400 mt-1"></i> العبء الأكبر
+                                يأتي غالباً من الاكتئاب المتكرر والمطول.</li>
+                        </ul>
                     </div>
                 </div>
+
                 <div x-show="tab === 3" x-transition.scale.origin.bottom x-cloak>
-                    <div class="flex flex-col md:flex-row gap-12 items-center">
-                        <div class="md:w-1/2">
-                            <h3 class="text-3xl font-black mb-6 text-teal-400">اضطراب المزاج الدوري</h3>
-                            <ul class="space-y-4 text-slate-300">
-                                <li class="flex gap-3"><i class="fas fa-check-circle text-teal-500 mt-1"></i> عدم
-                                    استقرار مزاجي مزمن (سنتين).</li>
-                                <li class="flex gap-3"><i class="fas fa-check-circle text-teal-500 mt-1"></i> أعراض لا
-                                    تبلغ نوبات مكتملة.</li>
-                                <li class="flex gap-3"><i class="fas fa-check-circle text-teal-500 mt-1"></i> تذبذب
-                                    مستمر دون تاريخ لهوس كامل.</li>
-                            </ul>
-                        </div>
-                        <div class="md:w-1/2 rounded-2xl overflow-hidden shadow-2xl">
-                            <img src="https://images.unsplash.com/photo-1499209974431-9dac3adaf471?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                                alt="Clouds">
-                        </div>
+                    <div class="text-right">
+                        <h3 class="text-3xl font-black mb-6 text-teal-400">اضطراب المزاج الدوري (Cyclothymia)</h3>
+                        <ul class="space-y-4 text-slate-300 text-lg">
+                            <li class="flex gap-3"><i class="fas fa-check-circle text-teal-500 mt-1"></i> عدم استقرار
+                                مزاجي مزمن (كـ سنتين).</li>
+                            <li class="flex gap-3"><i class="fas fa-check-circle text-teal-500 mt-1"></i> يتضمن فترات
+                                هوس خفيف واكتئاب لا تستوفي شروط النوبات المكتملة.</li>
+                            <li class="flex gap-3"><i class="fas fa-check-circle text-teal-500 mt-1"></i> يتميز بالمزمنة
+                                وتذبذب الأعراض "أكثر الوقت".</li>
+                        </ul>
                     </div>
                 </div>
             </div>
